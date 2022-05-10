@@ -45,6 +45,8 @@ jobs:
         CI: true
 
   Build-and-Push-Docker-Image:
+    permissions:
+      packages: write
     runs-on: ubuntu-latest
     needs: test
     name: Docker Build, Tag, Push
@@ -62,6 +64,6 @@ jobs:
       with:
         username: ${{github.actor}}
         password: ${{secrets.GITHUB_TOKEN}}
-        registry: ghcr.io
+        registry: docker.pkg.github.com
         repository: derekmcn1/github-actions-for-packages/tic-tac-toe
         tag_with_sha: true
